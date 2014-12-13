@@ -34,4 +34,6 @@ Method signature:	int minimum(int K, int[] danceCost)
 """
 class CostOfDancing(object):
 	def minimum(self,K,danceCost):
-		sum(sorted(danceCost)[:K])
+		return sum(sorted(danceCost)[:K])
+firstDance=CostOfDancing()
+assert firstDance.minimum(2,[1, 5, 3, 4]) ==4
