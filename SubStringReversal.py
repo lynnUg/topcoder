@@ -30,20 +30,18 @@ class SubstringReversal(object):
         for i in range(start,len(A)):
             B=copy.deepcopy(A)
             k,j=start,i
-            while k<len(A) and j>-1:
+            while k<j:
                 print B[k],B[j]
                 B[k],B[j]=B[j],B[k]
                 print B
                 k+=1
                 j-=1
             temp=''.join(B)
-            print temp,start
             if temp<check:
-                y=j
+                y=i
                 check=temp
         return [x,y]
 
 firstReversal=SubstringReversal()
-print firstReversal.solve("abdc")
-#assert firstReversal.solve("abdc")==[2,3]
+assert firstReversal.solve("abdc")==[2,3]
 
