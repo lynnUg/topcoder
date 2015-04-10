@@ -1,18 +1,11 @@
 #!env python
-import serial
-import time
-print "here"
-#m = serial.Serial('COM16', 115200, timeout=1)
-#m.write('ATZ\r')
-#m.write('AT+CMGF=1\r\n')
-#m.write('AT+CMGS="%s"\r\n' % '+256781057175')
-#m.write('this is the text message here')
-#m.write(chr(26))
-#m.close()
-import sms 
-m = sms.Modem('COM16')
-msgs=m.messages()
-print msgs[0].number
-print msgs[0].text
-print m.sent()
-#m.send('+256781057175', 'This is a message')
+
+from pygsm import GsmModem
+
+gsm = GsmModem(port="COM22",baudrate=115200,logger=GsmModem.debug_logger).boot()
+
+s = gsm.wait_for_network()
+#gsm.send_sms('+256784726116', 'This is a message')
+numbers=['+256779127009','+256782481746']
+for number in numbers:
+	gsm.send_sms(number, 'This is a message from a modem')

@@ -1,21 +1,18 @@
 class TheBlackJackDivOne:
 	def solve(self,s,C):
-		#print s, C
 		if s>=21:
-			return 0
+			return 0.0
 		total=0
 		for i in range(2,12):
 			total+=C[i]
 		result=0
-		#print total
 		for i in range(2,12):
 			if C[i]>0:
 				C[i]-=1
 				t=float(self.solve(s+i,C))
 				C[i]+=1
-				result+=t*C[i]
-				print i,result
-		return float(result)/float(total+1.0)
+				result+=float(t*C[i])
+		return float(result)/float(total)+1.0
 	def expected(self,cards):
 		C={}
 		for i in range(2,10):
@@ -34,8 +31,11 @@ class TheBlackJackDivOne:
 				d=int(c)
 			C[d]-=1
 			s+=d
-		print s, C
+		#print s, C
 		ret=self.solve(s,C)
 		return ret
 test=TheBlackJackDivOne()
 print test.expected(["JS"])
+print test.expected(["AS", "KS", "9S", "JC", "2D"])
+print test.expected(["7S", "JS"])
+print test.expected(["4D"])

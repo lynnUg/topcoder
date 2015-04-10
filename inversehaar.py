@@ -5,7 +5,7 @@ class InverseHarr:
 			for i in range(0, len(data)/2):
 				data2.append(data[i])
 			data3=self.transform(data2,L-1)
-			for i in range(0,len(data/2)):
+			for i in range(0,len(data)/2):
 				data[i]=data3[i]
 		
 		i,leng=len(data),len(data)
@@ -16,5 +16,8 @@ class InverseHarr:
 		return res
 test=InverseHarr()
 print test.transform([101, -53],1)
+print test.transform([3, 8, -1, -2],1)
+
+print test.transform([11, -5, -1, -2],2)
 
 
